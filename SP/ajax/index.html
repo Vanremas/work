@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+<!--    jquery cdn-->
+    <script
+            src="https://code.jquery.com/jquery-3.6.1.min.js"
+            integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+            crossorigin="anonymous"></script>
+</head>
+<body>
+<!--<form action="some.php" method="post">-->
+    <input type="text" name="title" class="title"> <br>
+    <textarea name="content" class="content" cols="30" rows="10"></textarea> <br>
+    <button type="submit" class="otp"> Go</button>
+<!--</form>-->
+
+<script>
+    $(document).ready(function (){
+        $('button.otp').on('click', function (){
+            var titleV = $('input.title').val();
+            var contentV = $('textarea.content').val();
+           //отправить в some.php
+
+            //jquery ajax
+            $.ajax({
+                method: "POST",
+                url: "some.php",
+                data: { title: titleV, content: contentV }
+            })
+
+             $('input.title').val('');
+            $('textarea.content').val('');
+
+        })
+
+    });
+</script>
+
+</body>
+</html>
